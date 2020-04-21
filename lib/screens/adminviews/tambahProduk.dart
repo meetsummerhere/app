@@ -66,17 +66,17 @@ if(value==1){
           children: <Widget>[
             TextFormField(
               onSaved: (e) => namaProduk = e,
-              decoration: InputDecoration(labelText: "Nama Produk", labelStyle: TextStyle(color:Colors.green)
+              decoration: InputDecoration(labelText: "Nama Produk", labelStyle: TextStyle(color:Colors.black)
               ),
             ),
             TextFormField(
               onSaved: (e) => qty = e,
-              decoration: InputDecoration(labelText: "Qty", labelStyle: TextStyle(color:Colors.green)
+              decoration: InputDecoration(labelText: "Qty", labelStyle: TextStyle(color:Colors.black)
               ),
             ),
             TextFormField(
               onSaved: (e) => harga = e,
-              decoration: InputDecoration(labelText: "Harga", labelStyle: TextStyle(color:Colors.green)
+              decoration: InputDecoration(labelText: "Harga", labelStyle: TextStyle(color:Colors.black)
               ),
             ),
             MaterialButton(

@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TambahProduk extends StatefulWidget {
+final VoidCallback reload;
+TambahProduk(this.reload);
   @override
   _TambahProdukState createState() => _TambahProdukState();
 }
@@ -42,6 +44,7 @@ String pesan = data['message'];
 if(value==1){
   print(pesan);
   setState(() {
+    widget.reload();
     Navigator.pop(context);
   });
 }else{

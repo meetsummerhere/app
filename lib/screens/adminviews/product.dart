@@ -15,7 +15,8 @@ class AdminProduct extends StatefulWidget {
 class _AdminProductState extends State<AdminProduct> {
 var loading = false;
 final list = new List<ProdukModel>();
-_lihatData()async{
+final GlobalKey<RefreshIndicatorState> _refresh = GlobalKey<RefreshIndicatorState>();
+Future<void> _lihatData()async{
   list.clear();
   setState(() {
     loading = true;
@@ -52,10 +53,13 @@ _lihatData()async{
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => TambahProduk()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => TambahProduk(_lihatData)));
         },
         ),
-       body: loading 
+       body: RefreshIndicator(
+         onRefresh: _lihatData,
+         key: _refresh,
+       child: loading 
        ? Center(child: CircularProgressIndicator()) 
        : ListView.builder(
          itemCount: list.length,
@@ -74,7 +78,9 @@ _lihatData()async{
                 ],
             ),
            );
+ 
          },
+         ),
          ),
     );
   }

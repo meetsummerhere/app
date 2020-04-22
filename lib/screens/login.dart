@@ -124,7 +124,12 @@ class _LoginScreenState extends State<LoginScreen> {
     switch (_loginStatus) {
       case LoginStatus.notSignIn:
         return Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+                   backgroundColor: Colors.transparent,
+bottomOpacity: 0.0,
+elevation: 0.0,
+        automaticallyImplyLeading: false,
+          ),
           body: Form(
             key: _key,
             child: ListView(

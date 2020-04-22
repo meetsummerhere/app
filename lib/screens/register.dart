@@ -23,8 +23,7 @@ class _RegisterState extends State<Register> {
   }
 
   save() async {
-    final response = await http.post(
-        BaseUrl.register,
+    final response = await http.post(BaseUrl.register,
         body: {"nama": nama, "username": username, "password": password});
     final data = jsonDecode(response.body);
     int value = data['value'];
@@ -49,7 +48,12 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        automaticallyImplyLeading: false,
+      ),
       body: Form(
         key: _key,
         child: ListView(
@@ -103,10 +107,7 @@ class _RegisterState extends State<Register> {
                 ),
               ),
             ),
-
-
-
- SizedBox(height: 10.0),
+            SizedBox(height: 10.0),
             Card(
               elevation: 3.0,
               child: Container(
@@ -154,7 +155,6 @@ class _RegisterState extends State<Register> {
                 ),
               ),
             ),
-
             SizedBox(height: 10.0),
             Card(
               elevation: 3.0,

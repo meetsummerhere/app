@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class AdminProduct extends StatefulWidget {
-  AdminProduct({Key key}) : super(key: key);
 
   @override
   _AdminProductState createState() => _AdminProductState();
@@ -65,6 +64,7 @@ _lihatData()async{
            return Container(
              padding: EdgeInsets.all(10.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(x.namaProduk),
                   Text(x.qty),

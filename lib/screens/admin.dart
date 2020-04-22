@@ -3,6 +3,7 @@ import 'package:ORANGE/screens/adminviews/product.dart';
 import 'package:ORANGE/screens/adminviews/profil.dart';
 import 'package:ORANGE/screens/adminviews/user.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MenuAdmin extends StatefulWidget {
   final VoidCallback signOut;
@@ -18,7 +19,11 @@ class _MenuAdminState extends State<MenuAdmin> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-      appBar: AppBar(
+      appBar: new AppBar(
+        backgroundColor: Colors.transparent,
+bottomOpacity: 0.0,
+elevation: 0.0,
+        automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
              onPressed: (){

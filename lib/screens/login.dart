@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:ORANGE/modal/api.dart';
 import 'package:ORANGE/screens/admin.dart';
@@ -59,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
     String alamatAPI = data['alamat'];
     String genderAPI = data['gender'];
     String t_lahirAPI = data['t_lahir'];
-      String idAPI = data['id'];
+    String idAPI = data['id'];
     String level = data['level'];
     if (value == 1) {
       //cek level
@@ -82,8 +83,17 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  savePref(int value, String username, String nama, String email, String phone,
-      String alamat, String gender, String t_lahir, String level, String id) async {
+  savePref(
+      int value,
+      String username,
+      String nama,
+      String email,
+      String phone,
+      String alamat,
+      String gender,
+      String t_lahir,
+      String level,
+      String id) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setInt("value", value);
@@ -125,10 +135,10 @@ class _LoginScreenState extends State<LoginScreen> {
       case LoginStatus.notSignIn:
         return Scaffold(
           appBar: AppBar(
-                   backgroundColor: Colors.transparent,
-bottomOpacity: 0.0,
-elevation: 0.0,
-        automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            bottomOpacity: 0.0,
+            elevation: 0.0,
+            automaticallyImplyLeading: false,
           ),
           body: Form(
             key: _key,
@@ -160,8 +170,10 @@ elevation: 0.0,
                     ),
                     child: TextFormField(
                       validator: (e) {
-                        if (e.isEmpty) {
-                          return "Please Insert Username";
+                        if (!e.contains("@")) {
+                          return "Format Email Salah !";
+                        }else{
+                          return null;
                         }
                       },
                       onSaved: (e) => username = e,
